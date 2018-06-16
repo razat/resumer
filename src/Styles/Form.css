@@ -1,0 +1,89 @@
+.profile-section {
+	background: radial-gradient(#fff, #ffdfd);
+	padding: 20px;
+}
+
+.box-form {
+	border-left: #2a93d5 solid 2px;
+	padding: 0.42em;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.peach-tile {
+	background-color: #fff;
+}
+
+
+.form-title {
+	text-align: left;
+	color: #351c4d;
+	font-family: georgio;
+	font-weight: 800;
+	font-size:1.3em;
+}
+.input-list {
+	text-align: left;
+}
+
+
+/*
+Styling of inline form elements
+*/
+
+
+.inline-textarea {
+	width:100%;
+	box-sizing: border-box;
+	padding: 10px;
+	border: none;
+	font-size: inherit;
+
+}
+.inline-textarea:focus {
+	outline: none;
+}
+.inline-textarea::placeholder {
+	opacity: 0.3;
+}
+
+.inline-input {
+	border-bottom: dashed 1px;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	margin: 0 4px;
+	padding: 0 2px;
+	font-size: inherit;
+}
+
+.inline-input:focus {
+	outline: none;
+	border-bottom-color: 351c4d;
+	border-bottom-width: 2px; 
+}
+.inline-input::placeholder {
+	opacity: 0.3;
+}
+.xsm-inline-input {
+	width: 28px;
+}
+
+.sm-inline-input {
+	width: 42px;
+}
+
+.mid-inline-input {
+	width: 85px;
+}
+
+.lg-inline-input {
+	width: 120px;
+}
+.midlg-inline-input {
+	width: 175px;
+}
+.xlg-inline-input {
+	width: 240px;
+}
+
