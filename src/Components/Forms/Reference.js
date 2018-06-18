@@ -4,10 +4,15 @@ class Reference extends Component {
   render() {
     return (
       <div className="box tile is-child">
-      	<h2 className="form-title">Reference</h2>
+      	<h2 className="form-title">References</h2>
         <div className="box-form">
-          <textarea className="inline-textarea" placeholder="Your Reference"></textarea>
-      </div>
+          <input type="email" className="inline-input lg-inline-input" name="name" placeholder="Full name"/>
+          <input type="email" className="inline-input lg-inline-input" name="relation" placeholder="Relationspqhip"/>
+          <input type="email" className="inline-input lg-inline-input" name="company" placeholder="Company"/>
+          <input type="email" className="inline-input lg-inline-input" name="mobile" placeholder="Mobile number"/>
+          <input type="email" className="inline-input lg-inline-input" name="email" placeholder="Email id"/>
+           <button className="button is-link is-small">Add</button>
+        </div>
       </div>
     );
   }

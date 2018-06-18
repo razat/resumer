@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 import Rating from 'react-rating';
 
-class Skills extends Component {
+class Language extends Component {
   render() {
     return (
       <div className="box tile is-child">
-      	<h2 className="form-title">Skills</h2>
+      	<h2 className="form-title">Language</h2>
       	<div className="box-form">
-      		<input type="text" className="inline-input lg-inline-input"  name="skill" placeholder="Name of skill"/>
-          <Rating
-  emptySymbol="far fa-star"
-  fullSymbol="fas fa-star"
-/> <button className="button is-link is-small">Add</button>
+      		<input type="text" className="inline-input lg-inline-input"  name="lang" placeholder="Language"/>
+          <button className="button is-link is-small">Add</button>
     	</div>
       <div className="tags">
-        <span className="tag">Javascript
+        <span className="tag">English
             <button className="delete is-small"></button>
         </span>
-        <span className="tag">HTML5
+        <span className="tag">German
             <button className="delete is-small"></button>
         </span>
-        <span className="tag">CSS3
+        <span className="tag">French
             <button className="delete is-small"></button>
         </span>
       </div>
@@ -29,4 +26,4 @@ class Skills extends Component {
   }
 }
 
-export default Skills;
+export default Language;

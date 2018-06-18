@@ -9,26 +9,34 @@ class PersonalInfo extends Component {
 
       		<ul className="input-list">
       			<li>
-	      			<label><i className="fas fa-envelope-square"></i></label>
-	      			<input type="email" className="inline-input midlg-inline-input" placeholder="loremIpsum@gmail.com"/>
+	      			<label><i className="fas fa-at"></i></label>
+	      			<input type="email" className="inline-input xlg-inline-input" placeholder="loremIpsum@gmail.com"/>
       			</li>
       			<li>
 	      			<label><i className="fas fa-mobile-alt"></i></label>
-	      			<input type="text" className="inline-input midlg-inline-input" placeholder="+919999999999"/>
+	      			<input type="text" className="inline-input xlg-inline-input" placeholder="+919999999999"/>
       			</li>
       			<li>
-	      			<label><i className="fab fa-github-square"></i></label>
-	      			<input type="text" className="inline-input midlg-inline-input" placeholder="@githubUsername"/>
+	      			<label><i className="fab fa-github"></i></label>
+	      			<input type="text" className="inline-input xlg-inline-input" placeholder="@githubUsername"/>
       			</li>
       		    <li>
-	      			<label><i className="fab fa-twitter-square"></i></label>
-	      			<input type="text" className="inline-input midlg-inline-input" placeholder="@twitterUsername"/>
+	      			<label><i className="fab fa-twitter"></i></label>
+	      			<input type="text" className="inline-input xlg-inline-input" placeholder="@twitterUsername"/>
       			</li>
-      		    <li>
-	      			<label><i className="fab fa-blogger"></i></label>
-	      			<input type="url" className="inline-input midlg-inline-input" placeholder="myblog.com"/>
+            <li>
+              <label><i className="fas fa-desktop"></i></label>
+              <input type="url" className="inline-input xlg-inline-input" placeholder="Any website"/>
+            </li>   
+      		  <li>
+	      			<label><i className="fab fa-blogger-b"></i></label>
+	      			<input type="url" className="inline-input xlg-inline-input" placeholder="myblog.com"/>
       			</li>
-      		</ul> 
+            <li>
+              <label><i className="fab fa-linkedin-in"></i></label>
+              <input type="url" className="inline-input xlg-inline-input" placeholder="Linkedin Username"/>
+            </li>      		
+          </ul> 
  		</div>
       </div>
     );

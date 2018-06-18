@@ -7,14 +7,16 @@
 	border-left: #2a93d5 solid 2px;
 	padding: 0.42em;
 	width: 100%;
-	box-sizing: border-box;
 }
 
 .peach-tile {
 	background-color: #fff;
 }
 
-
+.add-icon {
+	text-align: right;
+	margin: 0 0 15px 0;
+}
 .form-title {
 	text-align: left;
 	color: #351c4d;
