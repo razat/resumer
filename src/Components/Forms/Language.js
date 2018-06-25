@@ -1,29 +1,59 @@
 import React, { Component } from 'react';
-import Rating from 'react-rating';
+import { withFormik, Field } from 'formik';
+import { connect } from 'react-redux'
+import {setProfileData} from '../../actions/profileAction';
+import Tags from '../Common/Tags';
+
+
+const Form = ({handleSubmit, isSubmitting}) => (
+        <form className="box-form" onSubmit={handleSubmit}>
+          <Field type="text" className="inline-input lg-inline-input"  name="language" placeholder="Language"/>
+          <button className="button is-link is-small" onClick={handleSubmit}  disabled={isSubmitting}>Add</button>
+        </form>
+);
+
 
 class Language extends Component {
   render() {
     return (
       <div className="box tile is-child">
       	<h2 className="form-title">Language</h2>
-      	<div className="box-form">
-      		<input type="text" className="inline-input lg-inline-input"  name="lang" placeholder="Language"/>
-          <button className="button is-link is-small">Add</button>
-    	</div>
-      <div className="tags">
-        <span className="tag">English
-            <button className="delete is-small"></button>
-        </span>
-        <span className="tag">German
-            <button className="delete is-small"></button>
-        </span>
-        <span className="tag">French
-            <button className="delete is-small"></button>
-        </span>
-      </div>
+        <LanguageForm  dispatch={this.props.dispatch}/>
+        <Tags items={this.props.languages} onRemove={this.onRemove} />
+
       </div>
     );
   }
 }
 
-export default Language;
+const LanguageForm = withFormik({
+  mapPropsToValues: props => ({
+     language: ''
+  }),
+  handleSubmit: (values, { props, setSubmitting, resetForm}) => {
+    setSubmitting(true);
+    props.dispatch(setProfileData('languages', values.language));
+    resetForm()
+    setSubmitting(false);
+  },
+  validate: (values) => {
+    let errors = {};
+    if(!values.language) {
+      errors.language = 'required';
+    }
+    if(values.language && values.language.length < 2){
+      errors.hobby = 'Fill in valid language';
+    }
+    return errors;
+  }
+})(Form);
+
+
+function mapStateProps({profile}) {
+  return {
+    languages:  profile.languages || []
+  };
+}
+
+export default connect(mapStateProps)(Language);
+

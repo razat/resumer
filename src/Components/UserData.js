@@ -9,9 +9,15 @@ import Education from './Forms/Education';
 import Hobbies from './Forms/Hobbies';
 import Langugae from './Forms/Language';
 import '../Styles/Form.css';
+import { connect } from 'react-redux'
+import {getProfileData} from '../actions/profileAction';
+
 
 
 class UserData extends Component {
+	componentDidMount() {
+		this.props.fetchProfile();
+	}
   render() {
     return (
     <div className="container profile-section">
@@ -19,8 +25,9 @@ class UserData extends Component {
         <div className="tile is-ancestor">
 	  			<div className="tile is-vertical is-parent is-4">
 	  				<PersonalInfo />
-		    		<Reference />
 		      		<Skills />
+		      		<Reference />
+
 		      	</div>
 	    		<div className="tile is-vertical is-parent">
 	    			<BasicInfo />
@@ -41,39 +48,12 @@ class UserData extends Component {
 }
 
 
-export default UserData;
-
-
-{/*        <div className="tile is-ancestor">
-  			<div className="tile is-vertical">
-    			<div className="tile">
-	      			<div className="tile is-parent is-vertical is-4">
-	      				<PersonalInfo />
-
-	      			</div>
-	      			<div className="tile is-parent is-vertical">
-	      				<BasicInfo />
-	      				<Summary />
-	      			</div>
-    			</div>
-    		<div className="tile">
-	    			<div className="tile is-vertical is-parent is-4">
-	    				<Reference />
-	      				<Skills />
-	    			</div>
-	    			<div className="tile is-parent  is-vertical">
-	    				<WorkEx />
-	    				<div className="tile">
-	    					<div className="tile is-6 is-child">
-	    						<Langugae /></div>
-	    						<div className="tile is-6 is-child"><Hobbies /></div>
-	    				</div>
-	    			</div>
-	    			</div>
-	    			<div className="tile is-parent">
-	    				<Education />
-	    			</div>
-
-	    		</div>
-  			</div>
-		</div>*/}
+function mapStateProps(state) {
+	return state
+}
+function mapDispatchToProps(dispatch) {
+	return {
+		fetchProfile: () => dispatch(getProfileData())
+	}
+}
+export default connect(mapStateProps, mapDispatchToProps)(UserData);

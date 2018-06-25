@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withFormik, Field,  } from 'formik';
-import db from '../../fire';
 import debounce from '../../Utility/debounce';
+import { connect } from 'react-redux'
+import {setProfileData} from '../../actions/profileAction';
 
 
 const Form = ({values}) => (
@@ -19,41 +20,29 @@ const Form = ({values}) => (
 );
 
 
-const submitChanges = debounce((props) => { console.log(props), submitToFirebase(props);}, 2050);
-const submitToFirebase = (props) => {
-// 	console.log(db);
-// 	db.collection("users").add({
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815
-// })
-// .then(function(docRef) {
-//     console.log("Document written with ID: ", docRef.id);
-// })
-// .catch(function(error) {
-//     console.error("Error adding document: ", error);
-// });
+const submitChanges = debounce((props, dispatch) => {  	
+	dispatch(setProfileData('basicInfo',props)); 
+}, 2050);
 
-
-db.collection("User").doc("rajat").set(props).then(function() {
-    console.log("Document successfully written!");
-})
-.catch(function(error) {
-    console.error("Error writing document: ", error);
-});
-}
 const BasicInfo = withFormik({
-    mapPropsToValues: props => ({
+  mapPropsToValues: props => ({
      fullname: props.fullname || '',
      location: props.location  || '',
      experience: props.experience || '',
      package: props.package || '',
      notice: props.notice  || ''
- }),
-    validate: (props) => {
-      submitChanges(props);
-    },
+  }),
+  enableReinitialize: true,
+  validate: (values, {dispatch}) => {
+    submitChanges(values, dispatch);
+  },
 })(Form);
 
 
-export default BasicInfo;
+function mapStateProps({profile}) {
+	return {
+    ...profile.basicInfo
+  }
+}
+
+export default connect(mapStateProps)(BasicInfo);
