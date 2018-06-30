@@ -3,6 +3,10 @@
 	padding: 20px;
 }
 
+.is-right-aligned {
+	float:right;
+}
+
 .box-form {
 	border-left: #2a93d5 solid 2px;
 	padding: 0.42em;

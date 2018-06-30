@@ -8,6 +8,7 @@ import Skills from './Forms/Skills';
 import Education from './Forms/Education';
 import Hobbies from './Forms/Hobbies';
 import Langugae from './Forms/Language';
+import Certification from './Forms/Certification';
 import '../Styles/Form.css';
 import { connect } from 'react-redux'
 import {getProfileData} from '../actions/profileAction';
@@ -33,15 +34,16 @@ class UserData extends Component {
 	    			<BasicInfo />
 		      	    <Summary />
 		    		<WorkEx />
-		    		<div className="tile is-">
+		    		<div className="tile is-ancestor">
 		    			<div className="tile is-parent"><Langugae /></div>
 		    			<div className="tile is-parent"><Hobbies /></div>
 		    		</div>
 		    	</div>
   		</div>
-  		<div className="tile">
-	    		<Education />
-	    	</div>
+  		<div className="tile is-ancestor">
+	        <div className="tile is-parent"> <Education /> </div>
+	        <div className="tile is-parent"> <Certification /> </div>
+	    </div>
 	</div>
     );
   }

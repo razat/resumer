@@ -1,6 +1,7 @@
 import db from '../Utility/fire';
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
-export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+export const ADD_TO_PROFILE = 'ADD_TO_PROFILE';
+export const DELETE_FROM_PROFILE = 'DELETE_FROM_PROFILE';
 const userRef = db.collection('User');
 
 
@@ -15,54 +16,39 @@ export const getProfileData = (userId) => (dispatch, getState) => {
 	})
 }
 
+
+
+export const deleteProfileData = (section, index) => (dispatch, getState) => {
+	const authUser = {userId : 'raz123'}; //getState().authUser;
+	const sectionData = getState().profile[section] || [];
+	const newData = sectionData.slice(0, index).concat(sectionData.slice(index + 1));
+	dispatch(deleteProfileSectionData(section, index));
+	saveProfileData(authUser.userId, section, newData);	
+
+}
+
+
 // Update user profile data
 export const setProfileData = (section, data) => (dispatch, getState) => {
 	const authUser = {userId : 'raz123'}; //getState().authUser;
 	switch(section) {
 		case 'hobbies' : 
-			const hobbies = getState().profile.hobbies || [];
-			const newHobbies = [...hobbies, data];
-			dispatch(setProfileSection(section, data));
-			saveProfileData(authUser.userId, section, newHobbies);
-			break;
-
 		case 'languages': 
-			const languages = getState().profile.languages || [];
-			const newLanguage = [...languages, data];
-			dispatch(setProfileSection(section, data));
-			saveProfileData(authUser.userId, section, newLanguage);
-			break;
-
 		case 'skills':
-		    const skills = getState().profile.skills || [];
-		    const newSkill = [...skills, data];
-		    dispatch(setProfileSection(section, data));
-		    saveProfileData(authUser.userId, section, newSkill);
-		    break;
-
 		case 'reference': 
-		    const reference = getState().profile.reference || [];
-		    const newReference = [...reference, data];
-		    dispatch(setProfileSection(section, data));
-		    saveProfileData(authUser.userId, section, newReference);
-		    break;
 		case 'education':
-		    const education = getState().profile.education || [];
-		    const newEducation = [...education, data];
-		    dispatch(setProfileSection(section, data));
-		    saveProfileData(authUser.userId, section, newEducation);		    
-            break;
         case 'workEx':
-		    const workEx = getState().profile.workEx || [];
-		    const newWorkEx = [...workEx, data];
-		    dispatch(setProfileSection(section, data));
-		    saveProfileData(authUser.userId, section, newWorkEx);	
-		    break;	    
+		case 'certifications':
+		    const sectionData = getState().profile[section] || [];
+		    const newData = [...sectionData, data];
+		    dispatch(addToProfileSection(section, data));
+		    saveProfileData(authUser.userId, section, newData);	
+		    break;
 
 
 		default: 
 			saveProfileData(authUser.userId, section, data, () => { 
-				dispatch(setProfileSection(section, data));
+				dispatch(addToProfileSection(section, data));
 			});
 	}
 }
@@ -79,7 +65,6 @@ function saveProfileData(userId, section, data, cb) {
 
 }
 
-
 function receiveProfile(data) {
 	return {
 		type: RECEIVE_PROFILE,
@@ -87,10 +72,18 @@ function receiveProfile(data) {
 	}
 }
 
-function setProfileSection(section, data) {
+function addToProfileSection(section, data) {
 	return {
-		type: UPDATE_PROFILE,
+		type: ADD_TO_PROFILE,
 		section,
 		data
+	}
+}
+
+function deleteProfileSectionData(section, index) {
+	return {
+		type: DELETE_FROM_PROFILE,
+		section,
+		index
 	}
 }
