@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 
 
-
-
-
 const CertificationList = ({items, onRemove}) => (
   <ul>
     { items.map((item, id) => (

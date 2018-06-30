@@ -3,13 +3,14 @@ import './App.css';
 import 'bulma/css/bulma.min.css'
 
 
-import UserData from './Components/UserData.js';
+import UserData from './Components/UserData';
+import Resume from './Components/Resume';
 
 class App extends Component {
   render() {
     return (
       <div className="hero">
-        <UserData />
+        <Resume />
       </div>
     );
   }

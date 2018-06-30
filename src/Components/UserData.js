@@ -50,8 +50,8 @@ class UserData extends Component {
 }
 
 
-function mapStateProps(state) {
-	return state
+function mapStateProps({profile}) {
+	return profile
 }
 function mapDispatchToProps(dispatch) {
 	return {

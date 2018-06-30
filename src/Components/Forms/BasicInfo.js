@@ -11,7 +11,9 @@ const Form = ({values}) => (
       	<div className="box-form">
  				<p>	
  					I am <Field type="text" className="inline-input lg-inline-input" name="fullname" placeholder="Full Name"/> currently living in
- 					<Field type="text" className="inline-input mid-inline-input" name="location" placeholder="Banglore"/> . I have total work experience of 
+ 					<Field type="text" className="inline-input mid-inline-input" name="location" placeholder="Banglore"/>.<br/>
+           By profession i am <Field type="text" className="inline-input midlg-inline-input" name="profession" placeholder="Full stack developer"/>.
+           I have total work experience of 
  					<Field type="number" className="inline-input sm-inline-input" name="experience" placeholder="3.5"/> Years with current CTC of 
  					<Field type="number" className="inline-input sm-inline-input" name="package" placeholder="25"/> LPA and my notice period is <Field type="number" className="inline-input xsm-inline-input" name="notice" placeholder="2"/> months.
  				</p>
@@ -30,7 +32,8 @@ const BasicInfo = withFormik({
      location: props.location  || '',
      experience: props.experience || '',
      package: props.package || '',
-     notice: props.notice  || ''
+     notice: props.notice  || '',
+     profession: props.profession || ''
   }),
   enableReinitialize: true,
   validate: (values, {dispatch}) => {
