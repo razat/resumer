@@ -23,7 +23,10 @@ const Form = ({values, handleSubmit, isSubmitting, setFieldValue}) => (
       <p> 
         I  have Certification in 
         <Field type="text" className="inline-input midlg-inline-input"  name="name" placeholder="Certification Name"/> from
-        <Field type="text" className="inline-input midlg-inline-input" name="authority" placeholder="Certification Authority"/>.</p>
+        <Field type="text" className="inline-input midlg-inline-input" name="authority" placeholder="Certification Authority"/>.
+        Dated :   <Field type="date" className="inline-input midlg-inline-input" name="dated"/> 
+
+        </p>
         <br/>
         <label>Certification number: </label>
         <Field type="text" className="inline-input midlg-inline-input" name="certiNumber" placeholder="Certification number"/> 
@@ -60,7 +63,8 @@ const CertiForm = withFormik({
      name: '',
      authority: '',
      certiNumber: '',
-     certiUrl: ''
+     certiUrl: '',
+     dated: '',
   }),
   handleSubmit: (values, { props, setSubmitting, resetForm}) => {
     setSubmitting(true);

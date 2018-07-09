@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Rating from 'react-rating';
 import { withFormik, Field } from 'formik';
 import { connect } from 'react-redux'
-import {setProfileData} from '../../actions/profileAction';
+import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 import Tags from '../Common/Tags';
 
 
@@ -17,11 +17,12 @@ const Form = ({values, handleSubmit, isSubmitting}) => (
 
 
 class Skills extends Component {
-  componentDidMount() {
-    console.log(this.props.skills);
+  constructor(props) {
+    super(props);
+    this.onRemove = this.onRemove.bind(this);
   }
   onRemove(id) {
-    console.log(id);
+    this.props.dispatch(deleteProfileData('skills', id));
   }
   render() {
     return (

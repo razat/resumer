@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFormik, Field } from 'formik';
 import { connect } from 'react-redux'
-import {setProfileData} from '../../actions/profileAction';
+import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 
 const Form  = ({handleSubmit, isSubmitting}) => (
     <form className="box-form">
@@ -19,6 +19,7 @@ const ReferenceList = ({items, onRemove}) => (
   <ul>
     {items.map((item, id) => (
         <li key={item.name + id} className="box">
+          <a className="delete is-right-aligned" onClick={() => onRemove(id)}></a>
           <h3>{item.name},</h3>
           <h4>{item.designation} works at {item.company}</h4>
           <p>Mob no: {item.mobile}</p>
@@ -30,6 +31,13 @@ const ReferenceList = ({items, onRemove}) => (
 )
 
 class Reference extends Component {
+  constructor(props) {
+    super(props);
+    this.onRemove = this.onRemove.bind(this);
+  }
+  onRemove(id) {
+    this.props.dispatch(deleteProfileData('reference', id));
+  }
   render() {
     return (
       <div className="box tile is-child">

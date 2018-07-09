@@ -8,7 +8,12 @@ hr {
 	height: 2px;
 	background:black;
 }
-
+@page {
+	size: A4;
+	margin: 25px;
+	width: 210mm;
+	height: 296mm
+}
 .resume-content {
 	margin: 15px;
 	font-size: 0.9em;
@@ -38,4 +43,14 @@ hr {
 
 .job-section {
 	padding-top: 20px;
+}
+.intact {
+	page-break-inside: avoid;
+
+}
+.always-page-brake {
+	page-break-after: always;
+}
+.is-dotted {
+	list-style-type: disc;
 }

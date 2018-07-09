@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFormik, Field } from 'formik';
 import { connect } from 'react-redux'
-import {setProfileData} from '../../actions/profileAction';
+import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 import Tags from '../Common/Tags';
 
 
@@ -14,6 +14,14 @@ const Form = ({handleSubmit, isSubmitting}) => (
 
 
 class Language extends Component {
+  constructor(props) {
+    super(props);
+    this.onRemove = this.onRemove.bind(this);
+  }
+  onRemove(id) {
+    console.log(id);
+    this.props.dispatch(deleteProfileData('languages', id));
+  }
   render() {
     return (
       <div className="box tile is-child">

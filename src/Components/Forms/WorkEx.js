@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFormik, Field } from 'formik';
 import { connect } from 'react-redux'
-import {setProfileData} from '../../actions/profileAction';
+import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 
 
 class ToggleWorking extends Component {
@@ -31,6 +31,7 @@ const WorkList = ({items, onRemove}) => (
   <ul>
     { items.map((item, id) => (
         <li key={item.company + id} className="box">
+          <a className="delete is-right-aligned" onClick={() => onRemove(id)}></a>
           <h3>{item.startDate} - {item.isPresent ? 'Current' : item.endDate } :   {item.company},  {item.location} as {item.designation} </h3>
         </li>
     ))}
@@ -56,6 +57,13 @@ const Form = ({values, handleSubmit, isSubmitting, setFieldValue}) => (
 
 
 class WorkEx extends Component {
+  constructor(props) {
+    super(props);
+    this.onRemove = this.onRemove.bind(this);
+  }
+  onRemove(id) {
+    this.props.dispatch(deleteProfileData('workEx', id));
+  }
   render() {
     console.log(this.props.workEx);
     return (

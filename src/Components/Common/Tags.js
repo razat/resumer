@@ -15,7 +15,7 @@ class Tags extends Component {
                 {TagKeys.map((item, id) => {
                   return(
                       <span key={item.name + id} className={['rateit-'+item.rating, 'tag'].join(' ')}> {item.name}
-                          <button className="delete is-small"></button>
+                          <button className="delete is-small" onClick={() => this.props.onRemove(id)}></button>
                       </span>);
                 }
                 )}
@@ -28,7 +28,7 @@ class Tags extends Component {
                 {TagKeys.map((item, id) => {
                   return(
                       <span className="tag" key={item + id}> {item}
-                          <button className="delete is-small"></button>
+                          <button className="delete is-small" onClick={() => this.props.onRemove(id)}></button>
                       </span>);
                 }
                 )}

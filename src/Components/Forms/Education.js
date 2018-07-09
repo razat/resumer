@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFormik, Field } from 'formik';
 import { connect } from 'react-redux'
-import {setProfileData} from '../../actions/profileAction';
+import {setProfileData, deleteProfileData} from '../../actions/profileAction';
 
 
 const Form = ({handleSubmit, isSubmitting}) => (
@@ -23,6 +23,7 @@ const EducationList = ({items, onRemove}) => (
   <ul>
     {items.map((item, id) => (
         <li key={item.degree + id} className="box">
+          <a className="delete is-right-aligned" onClick={() => onRemove(id)}></a>
           <h3>I did {item.degree} in {item.subject} in year {item.year} from {item.school} at {item.location}</h3>
         </li>
     ))}
@@ -30,6 +31,13 @@ const EducationList = ({items, onRemove}) => (
 )
 
 class Education extends Component {
+  constructor(props) {
+    super(props);
+    this.onRemove = this.onRemove.bind(this);
+  }
+  onRemove(id) {
+    this.props.dispatch(deleteProfileData('education', id));
+  }
   render() {
     return (
       <div className="box tile is-child">
